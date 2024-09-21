@@ -1,5 +1,10 @@
-const state = {
-    value: 0
+function newStore(reducer) {
+    let state = 0;
+    let subscribers = 0;
+
+    const getState = function () {
+        return state
+    }
 }
 
 const increment = (state) => {
@@ -12,19 +17,20 @@ const increment = (state) => {
 const decrement = (state) => {
     return {
         ...state,
-        value: state.value + 1
+        value: state.value - 1
     }
 }
 
 const reset = (state) => {
     return {
         ...state,
-        value: state.value + 1
+        value: 0
     }
 }
 
 
-increment()
-increment()
-increment()
+
+increment(state)
+increment(state)
+increment(state)
 console.log(state)
