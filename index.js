@@ -3,8 +3,12 @@ function newStore(reducer) {
     let subscribers = 0;
 
     const getState = function () {
-        return state
-    }
+        return state;
+    };
+
+    const subscribe = function (subscriber) {
+        subscribers.push(subscriber);
+    };
 }
 
 const increment = (state) => {
