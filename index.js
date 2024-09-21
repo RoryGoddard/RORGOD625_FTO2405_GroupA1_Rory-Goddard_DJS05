@@ -14,7 +14,7 @@ function newStore(reducer) {
 
     // Remove a subscriber function from the subscribers array
     const unsubscribe = function (subscriber) {
-        subscribers.filter(item => item !== subscriber);
+        subscribers = subscribers.filter(item => item !== subscriber);
     };
 
     // Dispatch an action to modify the state
@@ -44,3 +44,6 @@ const counterReducer = (state = 0, action) => {
             return state;
     }
 }
+
+// Create a new store with the reducer
+const store = newStore(counterReducer)
