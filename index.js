@@ -11,7 +11,7 @@ function newStore(reducer) {
     };
 
     const unsubscribe = function (subscriber) {
-        subscribers.filter(item => !subscriber)
+        subscribers.filter(item => item !== subscriber)
     }
 }
 
