@@ -47,3 +47,15 @@ const counterReducer = (state = 0, action) => {
 
 // Create a new store with the reducer
 const store = newStore(counterReducer)
+
+// Subscribe to state changes and get the unsubscribe function
+const subscribe = store.subscribe(() => console.log("State:", store.getState()));
+
+// Dispatch actions to test different methods
+store.dispatch({ type: "INCREMENT" }); // Logs: State: 1
+store.dispatch({ type: "INCREMENT" }); // Logs: State: 2
+store.dispatch({ type: "INCREMENT" }); // Logs: State: 3
+store.dispatch({ type: "INCREMENT" }); // Logs: State: 4
+store.dispatch({ type: "DECREMENT" }); // Logs: State: 3
+store.dispatch({ type: "DECREMENT" }); // Logs: State: 2
+store.dispatch({ type: "RESET" }); // Logs: State: 0
