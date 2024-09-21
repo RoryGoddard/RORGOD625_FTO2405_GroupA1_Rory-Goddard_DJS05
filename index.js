@@ -1,5 +1,5 @@
 function newStore(reducer) {
-    let state = 0;
+    let state = null;
     let subscribers = [];
 
     // Get the state
@@ -31,26 +31,7 @@ function newStore(reducer) {
     };
 }
 
-const increment = (state) => {
-    return {
-        ...state,
-        value: state.value + 1
-    }
-}
-
-const decrement = (state) => {
-    return {
-        ...state,
-        value: state.value - 1
-    }
-}
-
-const reset = (state) => {
-    return {
-        ...state,
-        value: 0
-    }
-}
+const counterReducer = (state = 0, action)
 
 
 
