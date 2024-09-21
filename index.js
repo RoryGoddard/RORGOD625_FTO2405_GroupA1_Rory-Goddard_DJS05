@@ -22,6 +22,13 @@ function newStore(reducer) {
         state = reducer(state, action); // Reducer updates the state
         subscribers.forEach(subscriber => subscriber()) // Notify all subscribers of update to state
     }
+
+    return {
+        getState,
+        subscribe,
+        unsubscribe,
+        dispatch
+    };
 }
 
 const increment = (state) => {
