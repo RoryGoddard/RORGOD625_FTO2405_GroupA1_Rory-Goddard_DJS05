@@ -1,6 +1,6 @@
 function newStore(reducer) {
     let state = 0;
-    let subscribers = 0;
+    let subscribers = [];
 
     const getState = function () {
         return state;
@@ -9,6 +9,10 @@ function newStore(reducer) {
     const subscribe = function (subscriber) {
         subscribers.push(subscriber);
     };
+
+    const unsubscribe = function (subscriber) {
+        subscribers.filter(item => !subscriber)
+    }
 }
 
 const increment = (state) => {
