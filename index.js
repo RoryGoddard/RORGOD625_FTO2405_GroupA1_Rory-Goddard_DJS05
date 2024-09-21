@@ -1,5 +1,5 @@
 function newStore(reducer) {
-    let state = null;
+    let state = 0;
     let subscribers = [];
 
     // Get the state
