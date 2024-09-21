@@ -10,11 +10,10 @@ function newStore(reducer) {
     // Add a subscriber function to the subscribers array
     const subscribe = function (subscriber) {
         subscribers.push(subscriber);
-    };
 
-    // Remove a subscriber function from the subscribers array
-    const unsubscribe = function (subscriber) {
-        subscribers = subscribers.filter(item => item !== subscriber);
+        return function unsubscribe() {
+            subscribers = subscribers.filter(item => item !== subscriber);
+        };
     };
 
     // Dispatch an action to modify the state
@@ -49,7 +48,7 @@ const counterReducer = (state = 0, action) => {
 const store = newStore(counterReducer)
 
 // Subscribe to state changes and get the unsubscribe function
-const subscribe = store.subscribe(() => console.log("State:", store.getState()));
+const unsubscribe = store.subscribe(() => console.log("State:", store.getState()));
 
 // Dispatch actions to test different methods
 store.dispatch({ type: "INCREMENT" }); // Logs: State: 1
@@ -59,3 +58,9 @@ store.dispatch({ type: "INCREMENT" }); // Logs: State: 4
 store.dispatch({ type: "DECREMENT" }); // Logs: State: 3
 store.dispatch({ type: "DECREMENT" }); // Logs: State: 2
 store.dispatch({ type: "RESET" }); // Logs: State: 0
+
+unsubscribe()
+store.dispatch({ type: "INCREMENT" }); // Logs: State: 1
+store.dispatch({ type: "INCREMENT" }); // Logs: State: 2
+store.dispatch({ type: "INCREMENT" }); // Logs: State: 3
+
